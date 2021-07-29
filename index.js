@@ -78,6 +78,10 @@ function DisplayCharacter(Char) {
         Screen1.innerHTML += Char;
         HiddenText.value += "**";
     }
+    else if (Char === ".") {
+        Screen1.innerHTML += Char;
+        HiddenText.value += "**";
+    }
     else if (Char === "% of ") {
         Screen1.innerHTML += Char;
         HiddenText.value += "/100*";
