@@ -200,13 +200,13 @@
                 <div class="pads">3</div>
                 <div class="pads symbol">-</div>
                 <div class="pads">0</div>
-                <div class="pads">log</div>
                 <div class="pads">ANS</div>
+                <div class="pads symbol">=</div>
                 <div class="pads symbol">+</div>
-                <div class="pads symbol">-</div>
-                <div class="pads">0</div>
                 <div class="pads">log</div>
-                <div class="pads">ANS</div>
+                <div class="pads">^</div>
+                <div class="pads symbol">√</div>
+                <div class="pads">% of </div>
             </div>
         </div>
     </div>
@@ -230,6 +230,7 @@
     let HiddenText = document.getElementById("HiddenText");
     let Str;
 
+    HiddenText.value = Screen1.innerHTML;
     //    console.log(Array.from(pads));
     Array.from(pads).forEach((pad) => {
         pad.addEventListener('click', (e) => {
