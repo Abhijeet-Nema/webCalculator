@@ -6,171 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web-Calculator</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .conatiner {
-            height: auto;
-            width: 28.3vw;
-            margin: 1rem auto;
-            border: 5px solid rgb(0, 0, 0);
-            /* border-radius: 20px; */
-            /* box-shadow: 2px 3px 5px white; */
-            background: rgb(0, 0, 0);
-
-        }
-
-        h1 {
-            text-align: center;
-            padding: 12px;
-            color: white;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
-
-        .Screen {
-            height: 45px;
-            /* padding: 25px; */
-            width: 100%;
-            /* border-radius: 15px; */
-            font-size: 22px;
-            padding: 10px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            font-weight: bolder;
-            color: black;
-            background: rgb(255, 255, 255);
-            /* box-shadow: 2px 3px 5px white; */
-            display: flex;
-            align-items: center;
-
-        }
-
-        .Numpad {
-            margin-top: 0px;
-            border-radius: 1px dashed;
-            height: 80%;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(4, 1fr);
-            /* row-gap: 1px;
-            column-gap: 1px; */
-        }
-
-        .pads {
-            padding: 20%;
-            background: skyblue;
-            /* margin: 5px; */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 0.01px dashed;
-            font-size: 20px;
-            font-style: italic;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-weight: bold;
-            user-select: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .pads:hover {
-            /* background: rgba(0, 0, 0, 0.719); */
-            opacity: 0.7;
-        }
-
-        .pads:active {
-            transform: scale(0.97);
-            /* font-size: 18px; */
-            border: 0px solid;
-
-        }
-
-        .symbol {
-            font-size: 28px;
-        }
-
-        body {
-            background: linear-gradient(45deg, #6FC3F7, #1813A2);
-            background-repeat: no-repeat;
-            background-size: 100% 100%;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        #Screen2 {
-            justify-content: flex-end;
-        }
-
-        .ScreenCombined {
-            border: 2px solid;
-            border-radius: 5px;
-
-        }
-
-        .Backdround1 {
-            height: 55vw;
-            width: 55vw;
-            background: violet;
-            position: absolute;
-            top: -10%;
-            left: -10%;
-            border-radius: 50%;
-        }
-
-        .Backdround2 {
-            height: 45vw;
-            width: 45vw;
-            background: yellow;
-            position: absolute;
-            top: -35%;
-            right: 30%;
-            border-radius: 50%;
-        }
-
-        .Backdround3 {
-            height: 55vw;
-            width: 55vw;
-            background: orange;
-            position: absolute;
-            right: -15%;
-            top: -10%;
-            border-radius: 50%;
-        }
-
-        .Backdround4 {
-            height: 52vw;
-            width: 52vw;
-            background: navy;
-            position: absolute;
-            top: 30%;
-            right: 56%;
-            border-radius: 50%;
-        }
-
-        .Backdround5 {
-            height: 55vw;
-            width: 55vw;
-            background: tomato;
-            position: absolute;
-            bottom: -30%;
-            left: 30%;
-            border-radius: 50%;
-        }
-
-        .Background {
-            filter: blur(130px);
-            z-index: -2;
-            /* opacity: 0.9; */
-        }
-
-        #HiddenText {
-            display: none;
-        }
-    </style>
-</head>
+    <link rel="stylesheet" href="style.css">
 
 <body>
     <h1>Web-Calculator</h1>
@@ -179,7 +15,8 @@
         <div class="conatiner">
             <div class="ScreenCombined">
                 <div class="Screen" id="Screen1">0</div>
-                <div class="Screen" id="Screen2"> = <pre> <span id="Answer">0</span></pre>
+                <div class="Screen" id="Screen2"> =
+                    <pre> <span id="Answer">0</span></pre>
                 </div>
             </div>
             <div class="Numpad">
@@ -203,10 +40,11 @@
                 <div class="pads">ANS</div>
                 <div class="pads symbol">=</div>
                 <div class="pads symbol">+</div>
-                <div class="pads">log</div>
+                <div class="pads">.</div>
                 <div class="pads">^</div>
                 <div class="pads symbol">√</div>
                 <div class="pads">% of </div>
+               
             </div>
         </div>
     </div>
@@ -220,80 +58,5 @@
     <div class="Background Backdround5"></div>
 
 </body>
-<script>
-    //Grabbing the DOM elements
-
-    let Screen1 = document.getElementById("Screen1");
-    let Screen2 = document.getElementById("Screen2");
-    let Answer = document.getElementById("Answer");
-    let pads = document.getElementsByClassName("pads");
-    let HiddenText = document.getElementById("HiddenText");
-    let Str;
-
-    HiddenText.value = Screen1.innerHTML;
-    //    console.log(Array.from(pads));
-    Array.from(pads).forEach((pad) => {
-        pad.addEventListener('click', (e) => {
-            // console.log(e.target.value);
-            DisplayCharacter(e.target.innerHTML);
-            e.preventDefault();
-        })
-    })
-
-    function DisplayCharacter(Char) {
-        if (Char === "C") {
-            Screen1.innerHTML = "0";
-            HiddenText.value = "0";
-        }
-        else if (Char === "D") {
-            Str = Screen1.innerHTML.length - 1;
-            //    console.log(Str);
-            Screen1.innerHTML = Screen1.innerHTML.substring(0, Number(Str));
-            HiddenText.value = HiddenText.value.substring(0, Number(Str));
-            if (Screen1.innerHTML.length === 0) {
-                Screen1.innerHTML = "0";
-                HiddenText.value = "0";
-                Answer.innerHTML = "0";
-            }
-
-        }
-        else if (Char === "=") {
-            Str = eval(HiddenText.value);
-            Answer.innerHTML = Str;
-
-        }
-        else if (Char === "×") {
-            Screen1.innerHTML += Char;
-            HiddenText.value += '*';
-        }
-        else if (Char === "÷") {
-            Screen1.innerHTML += Char;
-            HiddenText.value += '/';
-        }
-        else if (Char === "ANS") {
-            Screen1.innerHTML = eval(HiddenText.value);
-            HiddenText.value = eval(HiddenText.value);
-            Answer.innerHTML = eval(HiddenText.value);
-        }
-
-        else {
-            if (Screen1.innerHTML === '0') {
-                Screen1.innerHTML = Char;
-                HiddenText.value = Char;
-            }
-            else {
-                Screen1.innerHTML += Char;
-                HiddenText.value += Char;
-            }
-        }
-    }
-
-    window.addEventListener("keydown", (e) => {
-        // console.log(e.key)
-        if (e.key === "Enter") {
-            DisplayCharacter('=');
-        }
-    })
-</script>
-
+<script src="index.js"></script>
 </html>
