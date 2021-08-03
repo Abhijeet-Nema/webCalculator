@@ -8,10 +8,13 @@
   height: auto;
   width: 28.3vw;
   margin: 1rem auto;
-  border: 5px solid rgb(0, 0, 0);
-  /* border-radius: 20px; */
-  /* box-shadow: 2px 3px 5px white; */
-  background: rgb(0, 0, 0);
+  /* border: 5px solid rgb(0, 0, 0); */
+  border-radius: 20px;
+  box-shadow: 2px 2px 30px 2.1px black;
+  background: rgb(255 255 255 / 60%);
+  /* transform: translateX(330px); */
+  padding: 1rem;
+  transition: all 1s;
 }
 
 h1 {
@@ -94,18 +97,6 @@ body {
   font-size: 28px;
 }
 
-.conatiner {
-  height: auto;
-  width: 28.3vw;
-  margin: 1rem auto;
-  border: 5px solid rgb(0 0 0 / 100%);
-  /* border-radius: 20px; */
-  /* box-shadow: 2px 3px 5px white; */
-  background: rgb(255 255 255 / 60%);
-  padding: 1rem;
-  box-shadow: 2px 2px 25px 6px black;
-}
-
 #Screen2 {
   justify-content: flex-end;
 }
@@ -173,6 +164,9 @@ body {
 
 #HiddenText {
   display: none;
+  position: absolute;
+  z-index: 95;
+  top: 0;
 }
 /* .ToSubPads {
             display: flex;
@@ -185,4 +179,65 @@ body {
 }
 .VerySmall {
   font-size: 8px;
+}
+
+#History {
+  height: 70vh;
+  width: 25vw;
+  background: rgba(0, 0, 0, 0.699);
+  position: absolute;
+  z-index: 2;
+ bottom: 0;
+  right: 0;
+  transform: translate(5%, 100%);
+  border-radius: 20px;
+  padding: 1rem;
+  /* border: 2px solid; */
+  overflow-y: scroll;
+  /* opacity: 0.7; */
+  /* display: none; */
+  transition: all 1s linear;
+  color: white;
+}
+#HistoryLabel {
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0%;
+  /* 12.5 */
+  /* transform: translateX(-50%); */
+  background: white;
+  padding: 10px;
+  border: 1px solid;
+  /* border-radius: 10px; */
+  opacity: 0.8;
+  cursor: pointer;
+  transition: all 0.25s;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  user-select: none;
+  /* display: none; */
+}
+#HistoryLabel:hover {
+  opacity: 1;
+}
+#History>div{
+  padding: 5px;
+  font-size: 17px;
+}
+#ClrHistory {
+  margin: 7px auto;
+  display: block;
+  padding: 6px;
+  color: black;
+  background: white;
+  border-radius: 5px;
+  font-weight: bold;
+  /* border: 2px solid; */
+  transition: all 0.2s;
+  cursor: pointer;
+}
+#ClrHistory:hover {
+  /* background: rgba(0, 0, 0, 0.459); */
+  opacity: 0.7;
 }

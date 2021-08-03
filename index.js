@@ -6,6 +6,14 @@ let Answer = document.getElementById("Answer");
 let pads = document.getElementsByClassName("pads");
 let HiddenText = document.getElementById("HiddenText");
 let Str;
+let Temp = "Your History is no more Mystery here <br/> <br/> <hr>";
+let HistoryLabel = document.getElementById("HistoryLabel");
+let His = document.getElementById("History");
+let Calculator = document.getElementById("Calculator");
+let ClrHistory = document.getElementById("ClrHistory");
+
+// Showing history on loading of page
+ShowHistory();
 
 HiddenText.value = Screen1.innerHTML;
 //    console.log(Array.from(pads));
@@ -58,6 +66,23 @@ function DisplayCharacter(Char) {
     else if (Char === "=") {
         Str = eval(HiddenText.value);
         Answer.innerHTML = Str;
+        let Calculations = localStorage.getItem("Calculations");
+         if(Calculations == null){
+            //  console.log("Nne")
+            CalculationsData = [];
+         }
+         else {
+             CalculationsData = JSON.parse(Calculations);
+            //  console.log("not null");
+            //  console.log(Calculations);
+         }
+         let HistoryNow = {
+             Problem : Screen1.innerHTML,
+             Answer : Answer.innerHTML
+         }
+         CalculationsData.unshift(HistoryNow);
+         localStorage.setItem("Calculations", JSON.stringify(CalculationsData));
+        ShowHistory();
 
     }
     else if (Char === "×") {
@@ -123,3 +148,50 @@ window.addEventListener("keydown", (e) => {
     }
 
 })
+
+HistoryLabel.addEventListener("click",()=>{
+    console.log(Calculator)
+    if(HistoryLabel.style.opacity != 1){
+        HistoryLabel.style.opacity = 1;
+        His.style.transform = "translate(5%, 3%)";
+        // ShowHistory();
+    }
+    else {
+        HistoryLabel.style.opacity = 0.6;
+        His.style.transform = "translate(5%, 100%)";
+    }
+    // HistoryLabel.style.left = "21%";
+    
+    // His.style.display = "block";
+
+})
+
+// To show the history from the localStorage
+function ShowHistory(){
+    let Calculations = localStorage.getItem("Calculations");
+    if (Calculations == null) {
+        //  console.log("Nne")
+        CalculationsData = [];
+        
+    }
+    else {
+        CalculationsData = JSON.parse(Calculations);
+        //  console.log("not null");
+        //  console.log(Calculations);
+    }
+    Temp = "Your History is no more Mystery here <br/> <br/> <hr>";
+
+    CalculationsData.forEach((Obj)=>{
+        Temp += `<div>${Obj.Problem}</div>
+        <div>= ${Obj.Answer}</div>
+        <hr>`;
+        // console.log(Obj)
+    })
+    Temp += "<button id='ClrHistory' onclick='ClearHistory()'> Clear History </button>";
+    His.innerHTML = Temp;
+}
+
+function ClearHistory(){
+    localStorage.clear();
+    ShowHistory();
+}
