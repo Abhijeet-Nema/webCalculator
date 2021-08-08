@@ -3,8 +3,12 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-.conatiner {
+@media (max-width: 1000px) {
+  .container {
+    width: 95% !important;
+  }
+}
+.container {
   height: auto;
   width: 28.3vw;
   margin: 1rem auto;
@@ -14,7 +18,7 @@
   background: rgb(255 255 255 / 60%);
   /* transform: translateX(330px); */
   padding: 1rem;
-  transition: all 1s;
+  transition: all 0.5s;
 }
 
 h1 {
@@ -45,8 +49,8 @@ h1 {
   /* overflow: scroll; */
 }
 
-.Numpad {
-  margin-top: 7px;
+#NormalNumpad {
+  /* margin-top: 7px; */
   border-radius: 1px dashed;
   height: 80%;
   display: grid;
@@ -56,8 +60,18 @@ h1 {
   row-gap: 4px;
 }
 
+#BinaryNumpad {
+  height: 80%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  column-gap: 4px;
+  row-gap: 4px;
+  display: none;
+}
+
 .pads {
-  padding: 20%;
+  padding: 18%;
   background: skyblue;
   /* margin: 5px; */
   display: flex;
@@ -72,6 +86,39 @@ h1 {
   cursor: pointer;
   transition: all 0.2s ease;
   border-radius: 29px;
+}
+
+.Binarypads {
+  padding: 13%;
+  background: #003500;
+  color: white;
+  /* margin: 5px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.01px solid green;
+  font-size: 22px;
+  font-style: italic;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 10px;
+}
+.Binarypads:nth-child(1){
+  grid-column: 1 / span 2;
+}
+.Binarypads:nth-child(2){
+  grid-column: 3 / span 2;
+}
+.DiffPads {
+  font-size: 14px;
+  font-family:Georgia, 'Times New Roman', Times, serif
+  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: black;
+  color: green;
+  text-align: center;
 }
 
 body {
@@ -92,6 +139,16 @@ body {
   /* font-size: 18px; */
   border: 0px solid;
 }
+.Binarypads:hover {
+  /* background: rgba(0, 0, 0, 0.719); */
+  opacity: 0.7;
+}
+
+.Binarypads:active {
+  transform: scale(0.97);
+  /* font-size: 18px; */
+  border: 0px solid;
+}
 
 .symbol {
   font-size: 28px;
@@ -104,6 +161,54 @@ body {
 .ScreenCombined {
   border: 2px solid;
   border-radius: 5px;
+}
+#SwitchToBinary {
+  height: 23px;
+  width: 52px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.452);
+  border: 2px solid grey;
+  cursor: pointer;
+  /* margin-right: 0; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  transition: all 0.18s ease-in;
+  user-select: none;
+}
+#SwitchBall {
+  height: 18.7px;
+  width: 18.7px;
+  background: grey;
+  border-radius: 50%;
+  transition: all 0.18s ease-in;
+  /* transform: translateX(28.3px); */
+  user-select: none;
+}
+
+#SwitchToBinary:hover > #SwitchBall {
+  opacity: 0.9;
+  /* box-shadow: 1px 1px 29px 2px rgba(46, 121, 233, 0.747); */
+}
+/* #SwitchToBinary:active {
+  border-color: blue;
+} */
+.SwitchDiv {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 35px;
+  padding: 2px;
+}
+.BinaryLabel {
+  font-size: 15px;
+  font-family: monospace;
+  margin-right: 5px;
+  font-weight: bold;
+  opacity: 0.85;
+  user-select: none;
+  transition: all 0.3s;
 }
 
 .Backdround1 {
@@ -187,7 +292,7 @@ body {
   background: rgba(0, 0, 0, 0.699);
   position: absolute;
   z-index: 2;
- bottom: 0;
+  bottom: 0;
   right: 0;
   transform: translate(5%, 100%);
   border-radius: 20px;
@@ -196,8 +301,10 @@ body {
   overflow-y: scroll;
   /* opacity: 0.7; */
   /* display: none; */
-  transition: all 1s linear;
+  transition: all 0.7s linear;
   color: white;
+  /* font-size: 16px; */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 #HistoryLabel {
   position: absolute;
@@ -221,7 +328,7 @@ body {
 #HistoryLabel:hover {
   opacity: 1;
 }
-#History>div{
+#History > div {
   padding: 5px;
   font-size: 17px;
 }

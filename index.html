@@ -12,14 +12,20 @@
     <h1>Web-Calculator</h1>
     <hr>
     <div class="main">
-        <div class="conatiner" id="Calculator">
+        <div class="container" id="Calculator">
             <div class="ScreenCombined">
                 <div class="Screen" id="Screen1">0</div>
                 <div class="Screen" id="Screen2"> =
                     <pre> <span id="Answer">0</span></pre>
                 </div>
             </div>
-            <div class="Numpad">
+            <div class="SwitchDiv">
+                <label onclick="TogglingSwitch()" class="BinaryLabel" id="BinaryLabel" for="SwitchToBinary">Switch To Binary</label>
+                <div onclick="TogglingSwitch()" id="SwitchToBinary">
+                 <div id="SwitchBall"></div>
+                </div>
+            </div>
+            <div class="Numpad" id="NormalNumpad">
                 <div class="pads">C</div>
                 <div class="pads">D</div>
                 <div class="pads symbol">(</div>
@@ -45,6 +51,26 @@
                 <div class="pads symbol">√</div>
                 <div class="pads">% of </div>
                
+            </div>
+            <div id="BinaryNumpad">
+                <div class="Binarypads symbol">0</div>
+                <div class="Binarypads symbol">1</div>
+                <div class="Binarypads">C</div>
+                <div class="Binarypads">D</div>
+                <div class="Binarypads symbol">(</div>
+                <div class="Binarypads symbol">)</div>
+                <div class="Binarypads symbol">+</div>
+                <div class="Binarypads symbol">-</div>
+                <div class="Binarypads symbol">&#215</div>
+                <div class="Binarypads symbol">&#247</div>
+                <div class="Binarypads">AND</div>
+                <div class="Binarypads">OR</div>
+                <div class="Binarypads">NOT</div>
+                <div class="Binarypads symbol">=</div>
+                <div class="Binarypads DiffPads">Binary to Decimal</div>
+                <div class="Binarypads DiffPads">Decimal to Binary</div>
+                <div class="Binarypads DiffPads">Binary to Text</div>
+                <div class="Binarypads DiffPads">Text to Binary</div>
             </div>
         </div>
     </div>
