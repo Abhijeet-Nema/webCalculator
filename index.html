@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web-Calculator</title>
     <link rel="stylesheet" href="style.css">
+    
+        
 
 <body>
     <h1>Web-Calculator</h1>
@@ -20,9 +22,10 @@
                 </div>
             </div>
             <div class="SwitchDiv">
-                <label onclick="TogglingSwitch()" class="BinaryLabel" id="BinaryLabel" for="SwitchToBinary">Switch To Binary</label>
+                <label onclick="TogglingSwitch()" class="BinaryLabel" id="BinaryLabel" for="SwitchToBinary">Switch To
+                    Binary</label>
                 <div onclick="TogglingSwitch()" id="SwitchToBinary">
-                 <div id="SwitchBall"></div>
+                    <div id="SwitchBall"></div>
                 </div>
             </div>
             <div class="Numpad" id="NormalNumpad">
@@ -50,27 +53,23 @@
                 <div class="pads">^</div>
                 <div class="pads symbol">√</div>
                 <div class="pads">% of </div>
-               
+
             </div>
             <div id="BinaryNumpad">
                 <div class="Binarypads symbol">0</div>
                 <div class="Binarypads symbol">1</div>
                 <div class="Binarypads">C</div>
                 <div class="Binarypads">D</div>
-                <div class="Binarypads symbol">(</div>
-                <div class="Binarypads symbol">)</div>
+                <div class="Binarypads">AND</div>
+                <div class="Binarypads">OR</div>
                 <div class="Binarypads symbol">+</div>
                 <div class="Binarypads symbol">-</div>
                 <div class="Binarypads symbol">&#215</div>
                 <div class="Binarypads symbol">&#247</div>
-                <div class="Binarypads">AND</div>
-                <div class="Binarypads">OR</div>
-                <div class="Binarypads">NOT</div>
+
                 <div class="Binarypads symbol">=</div>
-                <div class="Binarypads DiffPads">Binary to Decimal</div>
-                <div class="Binarypads DiffPads">Decimal to Binary</div>
-                <div class="Binarypads DiffPads">Binary to Text</div>
-                <div class="Binarypads DiffPads">Text to Binary</div>
+                <div class="DiffPads" id="ConvertToBinary">Convert Binary</div>
+                <div class="DiffPads credits">Text to Binary</div>
             </div>
         </div>
     </div>
@@ -84,6 +83,26 @@
         History
     </div>
 
+    <div id="ModalBackground">
+        <div id="ConversionModal">
+            <div id="Close">&#x2716</div>
+            <textarea name="ProblemField" placeholder="Input" id="ProblemField"
+                cols="30" rows="12"></textarea>
+            <div class="Select_btn_div">
+                <div class="SelectConversion">Select what to convert</div>
+                <div class="Options">
+                    <li id="DectoBin" class="ConversionOpt" value="Decimal To Binary">Decimal To Binary</li>
+                    <li id="BintoDec" class="ConversionOpt" value="Binary To Decimal">Binary To Decimal</li>
+                    <li id="TextoBin" class="ConversionOpt" value="Text To Binary">Text To Binary</li>
+                    <li id="BintoTex" class="ConversionOpt" value="Binary To Text">Binary To Text</li>
+                </div>
+                <button id="ConvertValuesBtn">Convert</button>
+            </div>
+            <textarea disabled name="AnswerField" placeholder="Output" id="AnswerField" cols="30" rows="12"></textarea>
+
+        </div>
+    </div>
+
     <div class="Background Backdround1"></div>
     <div class="Background Backdround2"></div>
     <div class="Background Backdround3"></div>
@@ -92,4 +111,5 @@
 
 </body>
 <script src="index.js"></script>
+
 </html>

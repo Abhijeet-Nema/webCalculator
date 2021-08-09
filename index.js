@@ -17,7 +17,12 @@ let Binarypads = document.getElementsByClassName("Binarypads");
 let NormalNumpad = document.getElementById("NormalNumpad");
 let BinaryNumpad = document.getElementById("BinaryNumpad");
 let container = document.getElementsByClassName("container")[0];
+let is_Binary = false;
+let SelectConversion = document.getElementsByClassName("SelectConversion")[0];
+let Options = document.getElementsByClassName("Options")[0];
+let ConversionOpt = document.getElementsByClassName("ConversionOpt");
 
+ProblemField.disabled = true;
 // Showing history on loading of page
 ShowHistory();
 
@@ -59,9 +64,10 @@ function DisplayCharacter(Char) {
     }
     else if (Char === "D") {
         Str = Screen1.innerHTML.length - 1;
+        Str_Hidden = HiddenText.value.length - 1;
         //    console.log(Str);
         Screen1.innerHTML = Screen1.innerHTML.substring(0, Number(Str));
-        HiddenText.value = HiddenText.value.substring(0, Number(Str));
+        HiddenText.value = HiddenText.value.substring(0, Number(Str_Hidden));
         if (Screen1.innerHTML.length === 0) {
             Screen1.innerHTML = "0";
             HiddenText.value = "0";
@@ -140,14 +146,26 @@ function DisplayCharacter(Char) {
 window.addEventListener("keydown", (e) => {
     // console.log(e.keyCode);
     if (e.key === "Enter") {
-        DisplayCharacter('=');
+        if (is_Binary) {
+            DisplayBinaryCharacter('=');
+        }
+        else {
+            DisplayCharacter('=');
+        }
     }
     else if (e.keyCode > 95 && e.keyCode <= 111) {
-        DisplayCharacter(e.key);
-        // console.log(e.keyCode);
+        if (!is_Binary) {
+            DisplayCharacter(e.key);
+            // console.log(e.keyCode);
+        }
     }
     else if (e.keyCode === 8) {
-        DisplayCharacter('D');
+        if (is_Binary) {
+            DisplayBinaryCharacter('D');
+        }
+        else {
+            DisplayCharacter('D');
+        }
     }
 
 })
@@ -200,14 +218,16 @@ function ClearHistory() {
 }
 
 function TogglingSwitch() {
+
     if (SwitchBall.style.transform != "translateX(28.6px)") {
         SwitchBall.style.transform = "translateX(28.6px)";
         SwitchBall.style.background = "black";
         SwitchToBinary.style.borderColor = "black";
         BinaryNumpad.style.display = "grid";
         NormalNumpad.style.display = "none";
-        container.style.background = "black";
+        container.style.background = "rgb(0 0 0 / 90%)";
         BinaryLabel.style.color = "white";
+        is_Binary = true;
     }
     else {
         SwitchBall.style.transform = "translateX(0px)";
@@ -217,8 +237,13 @@ function TogglingSwitch() {
         NormalNumpad.style.display = "grid";
         container.style.background = "rgb(255 255 255 / 60%)";
         BinaryLabel.style.color = "black";
+        is_Binary = false;
 
     }
+    Screen1.innerHTML = "0";
+    HiddenText.value = "0";
+    Answer.innerHTML = "0";
+
 }
 
 Array.from(Binarypads).forEach(BinaryPad => {
@@ -265,9 +290,10 @@ function DisplayBinaryCharacter(Char) {
     }
     else if (Char === "D") {
         Str = Screen1.innerHTML.length - 1;
+        Str_Hidden = HiddenText.value.length - 1;
         //    console.log(Str);
         Screen1.innerHTML = Screen1.innerHTML.substring(0, Number(Str));
-        HiddenText.value = HiddenText.value.substring(0, Number(Str));
+        HiddenText.value = HiddenText.value.substring(0, Number(Str_Hidden));
         if (Screen1.innerHTML.length === 0) {
             Screen1.innerHTML = "0";
             HiddenText.value = "0";
@@ -283,7 +309,7 @@ function DisplayBinaryCharacter(Char) {
         let LargestIndex;
         if (Problem.includes("+") || Problem.includes("-") || Problem.includes("*") || Problem.includes("/") || Problem.includes("&") || Problem.includes("|") || Problem.includes("~")) {
             // console.log("Yes");
-            LargestIndex = Math.max(Problem.lastIndexOf("+"), Problem.lastIndexOf("-"), Problem.lastIndexOf("*"), Problem.lastIndexOf("/"), Problem.lastIndexOf("&"), Problem.lastIndexOf("|"),Problem.lastIndexOf("~"));
+            LargestIndex = Math.max(Problem.lastIndexOf("+"), Problem.lastIndexOf("-"), Problem.lastIndexOf("*"), Problem.lastIndexOf("/"), Problem.lastIndexOf("&"), Problem.lastIndexOf("|"), Problem.lastIndexOf("~"));
             Binary = Problem.substr(LargestIndex + 1,);
             // console.log(Binary);
             DecimalEquivalent = parseInt(Binary, 2);
@@ -310,7 +336,7 @@ function DisplayBinaryCharacter(Char) {
         let LargestIndex;
         if (Problem.includes("+") || Problem.includes("-") || Problem.includes("*") || Problem.includes("/") || Problem.includes("&") || Problem.includes("|") || Problem.includes("~")) {
             // console.log("Yes");
-            LargestIndex = Math.max(Problem.lastIndexOf("+"), Problem.lastIndexOf("-"), Problem.lastIndexOf("*"), Problem.lastIndexOf("/"), Problem.lastIndexOf("&"), Problem.lastIndexOf("|"),Problem.lastIndexOf("~"));
+            LargestIndex = Math.max(Problem.lastIndexOf("+"), Problem.lastIndexOf("-"), Problem.lastIndexOf("*"), Problem.lastIndexOf("/"), Problem.lastIndexOf("&"), Problem.lastIndexOf("|"), Problem.lastIndexOf("~"));
             Binary = Problem.substr(LargestIndex + 1,);
             // console.log(Binary);
             DecimalEquivalent = parseInt(Binary, 2);
@@ -334,7 +360,7 @@ function DisplayBinaryCharacter(Char) {
         let LargestIndex;
         if (Problem.includes("+") || Problem.includes("-") || Problem.includes("*") || Problem.includes("/") || Problem.includes("&") || Problem.includes("|") || Problem.includes("~")) {
             // console.log("Yes");
-            LargestIndex = Math.max(Problem.lastIndexOf("+"), Problem.lastIndexOf("-"), Problem.lastIndexOf("*"), Problem.lastIndexOf("/"), Problem.lastIndexOf("&"), Problem.lastIndexOf("|"),Problem.lastIndexOf("~"));
+            LargestIndex = Math.max(Problem.lastIndexOf("+"), Problem.lastIndexOf("-"), Problem.lastIndexOf("*"), Problem.lastIndexOf("/"), Problem.lastIndexOf("&"), Problem.lastIndexOf("|"), Problem.lastIndexOf("~"));
             Binary = Problem.substr(LargestIndex + 1,);
             // console.log(Binary);
             DecimalEquivalent = parseInt(Binary, 2);
@@ -358,7 +384,7 @@ function DisplayBinaryCharacter(Char) {
         let LargestIndex;
         if (Problem.includes("+") || Problem.includes("-") || Problem.includes("*") || Problem.includes("/") || Problem.includes("&") || Problem.includes("|") || Problem.includes("~")) {
             // console.log("Yes");
-            LargestIndex = Math.max(Problem.lastIndexOf("+"), Problem.lastIndexOf("-"), Problem.lastIndexOf("*"), Problem.lastIndexOf("/"), Problem.lastIndexOf("&"), Problem.lastIndexOf("|"),Problem.lastIndexOf("~"));
+            LargestIndex = Math.max(Problem.lastIndexOf("+"), Problem.lastIndexOf("-"), Problem.lastIndexOf("*"), Problem.lastIndexOf("/"), Problem.lastIndexOf("&"), Problem.lastIndexOf("|"), Problem.lastIndexOf("~"));
             Binary = Problem.substr(LargestIndex + 1,);
             // console.log(Binary);
             DecimalEquivalent = parseInt(Binary, 2);
@@ -382,7 +408,7 @@ function DisplayBinaryCharacter(Char) {
         let LargestIndex;
         if (Problem.includes("+") || Problem.includes("-") || Problem.includes("*") || Problem.includes("/") || Problem.includes("&") || Problem.includes("|") || Problem.includes("~")) {
             // console.log("Yes");
-            LargestIndex = Math.max(Problem.lastIndexOf("+"), Problem.lastIndexOf("-"), Problem.lastIndexOf("*"), Problem.lastIndexOf("/"), Problem.lastIndexOf("&"), Problem.lastIndexOf("|"),Problem.lastIndexOf("~"));
+            LargestIndex = Math.max(Problem.lastIndexOf("+"), Problem.lastIndexOf("-"), Problem.lastIndexOf("*"), Problem.lastIndexOf("/"), Problem.lastIndexOf("&"), Problem.lastIndexOf("|"), Problem.lastIndexOf("~"));
             Binary = Problem.substr(LargestIndex + 1,);
             // console.log(Binary);
             DecimalEquivalent = parseInt(Binary, 2);
@@ -406,7 +432,7 @@ function DisplayBinaryCharacter(Char) {
         let LargestIndex;
         if (Problem.includes("+") || Problem.includes("-") || Problem.includes("*") || Problem.includes("/") || Problem.includes("&") || Problem.includes("|") || Problem.includes("~")) {
             // console.log("Yes");
-            LargestIndex = Math.max(Problem.lastIndexOf("+"), Problem.lastIndexOf("-"), Problem.lastIndexOf("*"), Problem.lastIndexOf("/"), Problem.lastIndexOf("&"), Problem.lastIndexOf("|"),Problem.lastIndexOf("~"));
+            LargestIndex = Math.max(Problem.lastIndexOf("+"), Problem.lastIndexOf("-"), Problem.lastIndexOf("*"), Problem.lastIndexOf("/"), Problem.lastIndexOf("&"), Problem.lastIndexOf("|"), Problem.lastIndexOf("~"));
             Binary = Problem.substr(LargestIndex + 1,);
             // console.log(Binary);
             DecimalEquivalent = parseInt(Binary, 2);
@@ -436,7 +462,7 @@ function DisplayBinaryCharacter(Char) {
         let LargestIndex;
         if (Problem.includes("+") || Problem.includes("-") || Problem.includes("*") || Problem.includes("/") || Problem.includes("&") || Problem.includes("|") || Problem.includes("~")) {
             // console.log("Yes");
-            LargestIndex = Math.max(Problem.lastIndexOf("+"), Problem.lastIndexOf("-"), Problem.lastIndexOf("*"), Problem.lastIndexOf("/"), Problem.lastIndexOf("&"), Problem.lastIndexOf("|"),Problem.lastIndexOf("~"));
+            LargestIndex = Math.max(Problem.lastIndexOf("+"), Problem.lastIndexOf("-"), Problem.lastIndexOf("*"), Problem.lastIndexOf("/"), Problem.lastIndexOf("&"), Problem.lastIndexOf("|"), Problem.lastIndexOf("~"));
             Binary = Problem.substr(LargestIndex + 1,);
             // console.log(Binary);
             DecimalEquivalent = parseInt(Binary, 2);
@@ -460,7 +486,7 @@ function DisplayBinaryCharacter(Char) {
         let LargestIndex;
         if (Problem.includes("+") || Problem.includes("-") || Problem.includes("*") || Problem.includes("/") || Problem.includes("&") || Problem.includes("|") || Problem.includes("~")) {
             // console.log("Yes");
-            LargestIndex = Math.max(Problem.lastIndexOf("+"), Problem.lastIndexOf("-"), Problem.lastIndexOf("*"), Problem.lastIndexOf("/"), Problem.lastIndexOf("&"), Problem.lastIndexOf("|"),Problem.lastIndexOf("~"));
+            LargestIndex = Math.max(Problem.lastIndexOf("+"), Problem.lastIndexOf("-"), Problem.lastIndexOf("*"), Problem.lastIndexOf("/"), Problem.lastIndexOf("&"), Problem.lastIndexOf("|"), Problem.lastIndexOf("~"));
             Binary = Problem.substr(LargestIndex + 1,);
             // console.log(Binary);
             DecimalEquivalent = parseInt(Binary, 2);
@@ -510,3 +536,105 @@ function DisplayBinaryCharacter(Char) {
     }
 }
 
+Array.from(ConversionOpt).forEach(Opt => {
+    Opt.addEventListener("click", () => {
+        SelectConversion.innerHTML = Opt.innerHTML;
+        Options.style.display = "none";
+        ProblemField.disabled = false;
+        AnswerField.value = "";
+        ProblemField.value = "";
+
+        if (SelectConversion.innerHTML === "Decimal To Binary") {
+            ProblemField.placeholder = "Enter a Decimal Number e.g. 45";
+        }
+        else if (SelectConversion.innerHTML === "Binary To Decimal") {
+            ProblemField.placeholder = "Enter a Binary Number e.g. 10010110";
+        }
+        else if (SelectConversion.innerHTML === "Text To Binary") {
+            ProblemField.placeholder = "Enter some Text e.g. Hello World!";
+        }
+        else if (SelectConversion.innerHTML === "Binary To Text") {
+            ProblemField.placeholder = "Enter a Eight Binary number series e.g. 1010111 1100101 1101100 1100011 1101111 1101101 1100101 100001";
+        }
+    })
+})
+
+SelectConversion.addEventListener("click", () => {
+    if (Options.style.display != "block") {
+        Options.style.display = "block";
+    }
+    else {
+        Options.style.display = "none";
+    }
+})
+
+ConvertValuesBtn.addEventListener("click", () => {
+    if (SelectConversion.innerHTML === "Decimal To Binary") {
+        let Decimal = Number(ProblemField.value);
+        AnswerField.value = Decimal.toString(2);
+        if (AnswerField.value == "NaN") {
+            AnswerField.value = "Enter a proper Decimal Number";
+        }
+    }
+    else if (SelectConversion.innerHTML === "Binary To Decimal") {
+        let Binary = Number(ProblemField.value);
+        AnswerField.value = parseInt(Binary, 2);
+        if (AnswerField.value == "NaN") {
+            AnswerField.value = "Enter a proper Binary Number";
+        }
+    }
+    else if (SelectConversion.innerHTML === "Text To Binary") {
+        let Temp = "";
+        let CharCode;
+        for (let i = 0; i < ProblemField.value.length; i++) {
+            if (i < ProblemField.value.length - 1) {
+                CharCode = ProblemField.value.charCodeAt(i);
+                Temp += CharCode.toString(2) + " ";
+            }
+            else {
+                CharCode = ProblemField.value.charCodeAt(i);
+                Temp += CharCode.toString(2);
+            }
+        }
+        AnswerField.value = Temp;
+    }
+    else if (SelectConversion.innerHTML === "Binary To Text") {
+        let CharEqu;
+        let Temp = "";
+        let DecimalEquivalent;
+        let BinArrs = ProblemField.value.split(" ");
+        // console.log(BinArrs);
+        BinArrs.forEach(Binary => {
+            DecimalEquivalent = parseInt(Binary, 2);
+            CharEqu = String.fromCharCode(DecimalEquivalent);
+            Temp += CharEqu;
+        })
+        AnswerField.value = Temp;
+    }
+    let Calculations = localStorage.getItem("Calculations");
+    if (Calculations == null) {
+        //  console.log("Nne")
+        CalculationsData = [];
+    }
+    else {
+        CalculationsData = JSON.parse(Calculations);
+        //  console.log("not null");
+        //  console.log(Calculations);
+    }
+    let HistoryNow = {
+        Problem: ProblemField.value,
+        Answer: AnswerField.value
+    }
+    CalculationsData.unshift(HistoryNow);
+    localStorage.setItem("Calculations", JSON.stringify(CalculationsData));
+    ShowHistory();
+    
+})
+
+Close.addEventListener("click", () => {
+    ModalBackground.style.display = "none";
+})
+
+ConvertToBinary.addEventListener("click", () => {
+    ModalBackground.style.display = "flex";
+})
