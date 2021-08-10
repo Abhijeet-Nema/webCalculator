@@ -8,10 +8,20 @@
     width: 90% !important;
     /* height: 100% !important; */
   }
-
+#HistoryLabel {
+  position: absolute;
+  z-index: 10 !important;
+  bottom: 50% !important;
+  right: 0 !important;
+  left: auto !important;
+  transform: translate(30%, -50%) rotate(-90deg) !important;
+  
+  /* display: none; */
+}
   #History {
     height: 75vh !important;
     width: 75vw !important;
+    padding-bottom: 4rem !important;
   }
   #ConversionModal {
     height: 70vh !important;

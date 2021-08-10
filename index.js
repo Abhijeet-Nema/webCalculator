@@ -219,8 +219,8 @@ function ClearHistory() {
 
 function TogglingSwitch() {
 
-    if (SwitchBall.style.transform != "translateX(28.6px)") {
-        SwitchBall.style.transform = "translateX(28.6px)";
+    if (SwitchBall.style.transform != "translateX(29px)") {
+        SwitchBall.style.transform = "translateX(29px)";
         SwitchBall.style.background = "black";
         SwitchToBinary.style.borderColor = "black";
         BinaryNumpad.style.display = "grid";
