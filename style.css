@@ -15,8 +15,7 @@
   right: 0 !important;
   left: auto !important;
   transform: translate(30%, -50%) rotate(-90deg) !important;
-  
-  /* display: none; */
+
 }
   #History {
     height: 75vh !important;
