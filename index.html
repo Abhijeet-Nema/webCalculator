@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web-Calculator</title>
     <link rel="stylesheet" href="style.css">
-    
-        
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 <body>
     <h1>Web-Calculator</h1>
@@ -66,10 +66,16 @@
                 <div class="Binarypads symbol">-</div>
                 <div class="Binarypads symbol">&#215</div>
                 <div class="Binarypads symbol">&#247</div>
-
-                <div class="Binarypads symbol">=</div>
+                <div class="Binarypads symbol equal">=</div>
                 <div class="DiffPads" id="ConvertToBinary">Convert Binary</div>
-                <div class="DiffPads credits">Text to Binary</div>
+                <div class="credits">
+                    <a href="https://github.com/Abhijeet-Nema" target="_blank"><i class="fa fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/abhijeet-nema-a15ba1202?originalSubdomain=in" target="_blank"><i
+                            class="fa fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/nema_abhi22/" target="_blank"><i class="fa fa-instagram"></i></a>
+                    <a href="https://m.facebook.com/profile.php?id=100006558217642" target="_blank"><i class="fa fa-facebook"></i></a>
+                    <a href="mailto:abhijeetnema22@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a>
+                </div>
             </div>
         </div>
     </div>
@@ -86,8 +92,7 @@
     <div id="ModalBackground">
         <div id="ConversionModal">
             <div id="Close">&#x2716</div>
-            <textarea name="ProblemField" placeholder="Input" id="ProblemField"
-                cols="30" rows="12"></textarea>
+            <textarea name="ProblemField" placeholder="Input" id="ProblemField" cols="30" rows="12"></textarea>
             <div class="Select_btn_div">
                 <div class="SelectConversion">Select what to convert</div>
                 <div class="Options">
@@ -96,7 +101,7 @@
                     <li id="TextoBin" class="ConversionOpt" value="Text To Binary">Text To Binary</li>
                     <li id="BintoTex" class="ConversionOpt" value="Binary To Text">Binary To Text</li>
                 </div>
-                <button id="ConvertValuesBtn">Convert</button>
+                <button id="ConvertValuesBtn">Convert &#x21C5</button>
             </div>
             <textarea disabled name="AnswerField" placeholder="Output" id="AnswerField" cols="30" rows="12"></textarea>
 

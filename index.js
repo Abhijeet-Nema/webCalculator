@@ -174,12 +174,12 @@ HistoryLabel.addEventListener("click", () => {
     // console.log(Calculator);
     if (HistoryLabel.style.opacity != 1) {
         HistoryLabel.style.opacity = 1;
-        His.style.transform = "translate(5%, 3%)";
+        His.style.transform = "translateX(0%)";
         // ShowHistory();
     }
     else {
         HistoryLabel.style.opacity = 0.6;
-        His.style.transform = "translate(5%, 100%)";
+        His.style.transform = "translateX(100%)";
     }
     // HistoryLabel.style.left = "21%";
 
@@ -235,7 +235,7 @@ function TogglingSwitch() {
         SwitchToBinary.style.borderColor = "grey";
         BinaryNumpad.style.display = "none";
         NormalNumpad.style.display = "grid";
-        container.style.background = "rgb(255 255 255 / 60%)";
+        container.style.background = "rgb(255 255 255 / 70%)";
         BinaryLabel.style.color = "black";
         is_Binary = false;
 

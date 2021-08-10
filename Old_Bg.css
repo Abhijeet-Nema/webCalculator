@@ -1,0 +1,45 @@
+
+.Backdround1 {
+  height: 55vmax;
+  width: 55vmax;
+  background: violet;
+  position: absolute;
+  top: -10%;
+  left: -10%;
+}
+
+.Backdround2 {
+  height: 45vmax;
+  width: 45vmax;
+  background: yellow;
+  position: absolute;
+  top: -35%;
+  right: 30%;
+}
+
+.Backdround3 {
+  height: 55vmax;
+  width: 55vmax;
+  background: orange;
+  position: absolute;
+  right: -15%;
+  top: -10%;
+}
+
+.Backdround4 {
+  height: 52vmax;
+  width: 52vmax;
+  background: navy;
+  position: absolute;
+  top: 30%;
+  right: 56%;
+}
+
+.Backdround5 {
+  height: 55vmax;
+  width: 55vmax;
+  background: tomato;
+  position: absolute;
+  bottom: -30%;
+  left: 30%;
+}
