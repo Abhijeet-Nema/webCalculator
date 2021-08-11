@@ -21,6 +21,8 @@ let is_Binary = false;
 let SelectConversion = document.getElementsByClassName("SelectConversion")[0];
 let Options = document.getElementsByClassName("Options")[0];
 let ConversionOpt = document.getElementsByClassName("ConversionOpt");
+let ClearBtn = document.getElementById("ClearBtn");
+let CopyBtn = document.getElementById("CopyBtn");
 
 ProblemField.disabled = true;
 // Showing history on loading of page
@@ -559,6 +561,22 @@ Array.from(ConversionOpt).forEach(Opt => {
     })
 })
 
+ClearBtn.addEventListener("click", () => {
+    AnswerField.value = "";
+    ProblemField.value = "";
+})
+
+CopyBtn.addEventListener("click", () => {
+    if (AnswerField.value.length > 0) {
+        AnswerField.disabled = false;
+        AnswerField.select();
+        AnswerField.setSelectionRange(0, AnswerField.value.length);
+        document.execCommand("copy");
+        AnswerField.disabled = true;
+        alert("Successfully Copied !");
+    }
+})
+
 SelectConversion.addEventListener("click", () => {
     if (Options.style.display != "block") {
         Options.style.display = "block";
@@ -628,7 +646,7 @@ ConvertValuesBtn.addEventListener("click", () => {
     CalculationsData.unshift(HistoryNow);
     localStorage.setItem("Calculations", JSON.stringify(CalculationsData));
     ShowHistory();
-    
+
 })
 
 Close.addEventListener("click", () => {
