@@ -6,7 +6,7 @@ let Answer = document.getElementById("Answer");
 let pads = document.getElementsByClassName("pads");
 let HiddenText = document.getElementById("HiddenText");
 let Str;
-let Temp = "Your History is no more Mystery here <br/> <br/> <hr>";
+let Temp = "<strong> History </strong> <br/> <br/> <hr>";
 let HistoryLabel = document.getElementById("HistoryLabel");
 let His = document.getElementById("History");
 let Calculator = document.getElementById("Calculator");
@@ -202,7 +202,7 @@ function ShowHistory() {
         //  console.log("not null");
         //  console.log(Calculations);
     }
-    Temp = "Your History is no more Mystery here <br/> <br/> <hr>";
+    let Temp = "<strong> History </strong> <br/> <br/> <hr>";
 
     CalculationsData.forEach((Obj) => {
         Temp += `<div>${Obj.Problem}</div>
