@@ -59,11 +59,11 @@
   width: 28.3vw;
   margin: 1rem auto;
   /* border: 5px solid rgb(0, 0, 0); */
-  border-radius: 20px;
+  border-radius: 5px;
   box-shadow: 2px 2px 20px 2.1px black;
   background: rgb(255 255 255 / 70%);
   /* transform: translateX(330px); */
-  padding: 1rem;
+  padding: 0.5rem;
   transition: all 0.5s;
 }
 
@@ -103,8 +103,8 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  column-gap: 4px;
-  row-gap: 4px;
+  column-gap: 0px;
+  row-gap: 0px;
 }
 
 #BinaryNumpad {
@@ -132,7 +132,7 @@
   user-select: none;
   cursor: pointer;
   transition: all 0.2s ease;
-  border-radius: 20px;
+  border-radius: 1px;
 }
 
 .Binarypads {
