@@ -24,7 +24,7 @@
     padding-bottom: 4rem !important;
   }
   #ConversionModal {
-    height: 70vh !important;
+    height: max-content !important;
     width: 95vw !important;
     background: white;
     border-radius: 4px !important;
