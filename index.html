@@ -11,7 +11,9 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 
 <body>
     <div class="heading">Web-Calculator</div>
@@ -105,9 +107,9 @@
                     <li id="TextoBin" class="ConversionOpt" value="Text To Binary">Text To Binary</li>
                     <li id="BintoTex" class="ConversionOpt" value="Binary To Text">Binary To Text</li>
                 </div>
-                <button id="ConvertValuesBtn"><em>Convert</em> &#x21C5</button>
-                <button id="ClearBtn"><em>Clear all</em> &#x2716;</button>
-                <button id="CopyBtn"><em>Copy Output</em> &#128203;</button>
+                <button id="ConvertValuesBtn" class="actionBtns">Convert &#x21C5</button>
+                <button id="ClearBtn" class="actionBtns">Clear all &#x2716;</button>
+                <button id="CopyBtn" class="actionBtns">Copy Output &#128203;</button>
             </div>
             <textarea disabled name="AnswerField" placeholder="Output" id="AnswerField" cols="30" rows="12"></textarea>
 
